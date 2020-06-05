@@ -1,11 +1,11 @@
 package com.example.kotlin1
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity;
+
 import android.view.View
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.jakewharton.threetenabp.AndroidThreeTen
 
 import kotlinx.android.synthetic.main.activity_home.*

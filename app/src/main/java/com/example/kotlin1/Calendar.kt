@@ -2,11 +2,11 @@ package com.example.kotlin1
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.calendar_fragment.*
 import kotlinx.android.synthetic.main.timer_fragment.*
 
@@ -18,7 +18,13 @@ class Calendar: Fragment() {
     var time1:String="AM"
     var time2:String="AM"
     var Date:String=""
-
+    private lateinit var calendar:CalendarView
+    private lateinit var scroll1:Switch
+    private lateinit var scroll2:Switch
+    private lateinit var button:Button
+    private lateinit var eventname:EditText
+    private lateinit var start_time:EditText
+    private lateinit var end_time:EditText
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view= inflater.inflate(R.layout.calendar_fragment,container,false)
 
@@ -26,10 +32,18 @@ class Calendar: Fragment() {
         return view
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        calendar=view.findViewById(R.id.calendarview)
+        scroll1=view.findViewById(R.id.switch1)
+        scroll2=view.findViewById(R.id.switch2)
+        button=view.findViewById(R.id.createevent)
+        eventname=view.findViewById(R.id.eventname)
+        start_time=view.findViewById(R.id.start_time)
+        end_time=view.findViewById(R.id.end_time)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -39,9 +53,7 @@ class Calendar: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val calendar:CalendarView=calendarview
-        val scroll1:Switch=switch1
-        val scroll2:Switch=switch2
+
         //Managing changing between AM and PM
         scroll1.setOnCheckedChangeListener({_,isChecked->
             time1=scroll1.text.toString()
@@ -80,8 +92,10 @@ class Calendar: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val button:Button=createevent
+
         val t:Toast=Toast.makeText(activity?.applicationContext,"Please Make Sure all entries are filled",Toast.LENGTH_LONG)
+        val t2:Toast=Toast.makeText(activity?.applicationContext,"Activity Created",Toast.LENGTH_LONG)
+
         button.setOnClickListener({
             if(eventname.text.toString().length>0){
                 event=eventname.text.toString()
@@ -92,6 +106,9 @@ class Calendar: Fragment() {
             }
             if(end_time.text.toString().length>0){
                 end=end_time.text.toString().toInt()
+            }
+            if(start>0 && end>0 && event.length>0){
+                t2.show()
             }
             else{
                 t.show()

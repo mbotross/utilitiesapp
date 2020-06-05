@@ -3,23 +3,30 @@ package com.example.kotlin1
 import android.content.Context
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.v4.app.Fragment
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.timer_fragment.*
 import java.sql.Time
 import java.util.*
 import java.util.Timer
 
-class Timer:Fragment(){
+class Timer: Fragment(){
 
     var amnt:Long=0
     private lateinit var times:CountDownTimer
     var progresstat=0
+    private lateinit var entertime:TextView
+    private lateinit var startbuttn:Button
+    private lateinit var change:EditText
+    private lateinit var reset:Button
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view= inflater.inflate(R.layout.timer_fragment,container,false)
@@ -28,17 +35,23 @@ class Timer:Fragment(){
         }
         else{
             amnt=savedInstanceState.getLong("amnt",0)
-            entertime.setText(amnt.toString())
+
         }
 
         return view
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        entertime=view.findViewById(R.id.entertime)
+        startbuttn=view.findViewById(R.id.starttime)
+        change=view.findViewById(R.id.changetime)
+        reset=view.findViewById(R.id.resest)
+        entertime.setText(amnt.toString())
+
 
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -64,8 +77,6 @@ class Timer:Fragment(){
     override fun onStart() {
         super.onStart()
 
-        val startbuttn = starttime
-        val change = changetime
         var diff:Long =0
         var secondsInMilli:Long=0
         var minutesInMilli:Long =0
@@ -122,7 +133,7 @@ class Timer:Fragment(){
 
 
         }
-        val reset:Button=resest
+
         reset.setOnClickListener({
             click=0
             entertime.setText("")
