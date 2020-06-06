@@ -20,6 +20,7 @@ class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
         changefrag2()
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Calendar", Snackbar.LENGTH_LONG)
@@ -40,6 +41,7 @@ class Home : AppCompatActivity() {
                 changefrag3()
 
         }
+
     }
 
 

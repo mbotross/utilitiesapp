@@ -1,5 +1,4 @@
 package com.example.kotlin1
-
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -11,6 +10,7 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
 
     private val repository: DataRepo
     val allWords: LiveData<List<Entries>>
+
 
 
     init{

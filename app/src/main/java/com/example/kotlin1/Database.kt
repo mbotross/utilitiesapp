@@ -10,8 +10,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.time.chrono.HijrahChronology
 
-@Database(entities = arrayOf(Entries::class), version = 1, exportSchema = false)
-public abstract class WordRoomDatabase : RoomDatabase() {
+@Database(entities = arrayOf(Entries::class), version = 2, exportSchema = false)
+abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): DAO
 
@@ -25,20 +25,8 @@ public abstract class WordRoomDatabase : RoomDatabase() {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    var wordDao = database.wordDao()
+                    populateDatabase(database.wordDao())
 
-                    // Delete all content here.
-                    wordDao.deleteAll()
-
-                    // Add sample words.
-                    var word = Entries("Hello")
-                    wordDao.insert(word)
-                    word = Entries("World!")
-                    wordDao.insert(word)
-
-                    // TODO: Add your own words!
-                    word = Entries("TODO!")
-                    wordDao.insert(word)
                 }
             }
         }
@@ -48,9 +36,10 @@ public abstract class WordRoomDatabase : RoomDatabase() {
             wordDao.deleteAll()
 
             // Add sample words.
-            var word = Entries("Hello")
+            var word = Entries(1,"Hello")
             wordDao.insert(word)
-            word = Entries("World!")
+
+            word = Entries(2, "World!")
             wordDao.insert(word)
 
             // TODO: Add your own words!
@@ -62,7 +51,6 @@ public abstract class WordRoomDatabase : RoomDatabase() {
         // same time.
         @Volatile
         private var INSTANCE: WordRoomDatabase? = null
-
         fun getDatabase(context: Context,scope: CoroutineScope): WordRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -72,8 +60,10 @@ public abstract class WordRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WordRoomDatabase::class.java,
-                    "word_database"
-                ).build()
+                   "word_database"
+                ).addCallback(DatabaseCallback(scope))
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 return instance
             }

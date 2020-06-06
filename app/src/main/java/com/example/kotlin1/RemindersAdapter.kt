@@ -25,7 +25,8 @@ class WordListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = words[position]
-        holder.wordItemView.text = current.entry
+        holder.wordItemView.text = current.id.toString().plus(".  ").plus(current.entry)
+
 
     }
 

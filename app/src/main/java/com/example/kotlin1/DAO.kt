@@ -8,10 +8,11 @@ import androidx.room.Query
 
 @Dao
 interface DAO{
-    @Query("SELECT * from Entry_table ORDER BY Entry ASC")
+    @Query("SELECT * from Entry_table")
     fun getEntries(): LiveData<List<Entries>>
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(word: Entries)
     @Query("DELETE FROM Entry_table")
     suspend fun deleteAll()
+
 }
