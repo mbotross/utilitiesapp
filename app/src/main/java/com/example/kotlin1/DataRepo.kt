@@ -8,4 +8,7 @@ class DataRepo (private val wordDao:DAO){
     suspend fun insert(word: Entries) {
         wordDao.insert(word)
     }
+    suspend fun deletentry(word: Entries){
+        wordDao.deletentry(word)
+    }
 }

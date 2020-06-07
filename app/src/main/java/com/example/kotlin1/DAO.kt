@@ -1,10 +1,7 @@
 package com.example.kotlin1
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface DAO{
@@ -14,5 +11,7 @@ interface DAO{
     suspend fun insert(word: Entries)
     @Query("DELETE FROM Entry_table")
     suspend fun deleteAll()
+    @Delete
+    suspend fun deletentry(entry:Entries)
 
 }

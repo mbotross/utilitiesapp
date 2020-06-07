@@ -23,4 +23,7 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
     fun insert(word: Entries) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(word)
     }
+    fun delete(word:Entries)=viewModelScope.launch(Dispatchers.IO) {
+        repository.deletentry(word)
+    }
 }
