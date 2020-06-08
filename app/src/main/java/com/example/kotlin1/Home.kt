@@ -24,20 +24,20 @@ class Home : AppCompatActivity() {
         changefrag2()
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Calendar", Snackbar.LENGTH_LONG)
-                .setAction("Calendar", null).show()
+                //.setAction("Calendar", null).show()
                 changefrag2()
         }
 
         timer.setOnClickListener {view ->
             Snackbar.make(view, "Timer", Snackbar.LENGTH_LONG)
-                .setAction("Timer", null).show()
+                //.setAction("Timer", null).show()
 
             changefrag1()
 
         }
         reminder.setOnClickListener{view->
             Snackbar.make(view,"Reminders",Snackbar.LENGTH_LONG)
-                .setAction("Reminders",null).show()
+                //.setAction("Reminders",null).show()
                 changefrag3()
 
         }

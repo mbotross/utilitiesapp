@@ -59,11 +59,6 @@ class Reminders: Fragment() , onclickremind{
 
 
 
-
-
-
-
-
     }
 
 

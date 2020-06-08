@@ -13,5 +13,9 @@ interface DAO{
     suspend fun deleteAll()
     @Delete
     suspend fun deletentry(entry:Entries)
+    @Query("SELECT * from Calendar_table")
+    fun getEvents():LiveData<List<Event>>
+   @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertevent(event:Event)
 
 }

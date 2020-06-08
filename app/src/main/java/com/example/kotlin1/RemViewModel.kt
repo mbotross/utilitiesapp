@@ -10,6 +10,7 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
 
     private val repository: DataRepo
     val allWords: LiveData<List<Entries>>
+    val allEvents: LiveData<List<Event>>
 
 
 
@@ -17,6 +18,7 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
         val wordsDao = WordRoomDatabase.getDatabase(application,viewModelScope).wordDao()
         repository = DataRepo(wordsDao)
         allWords = repository.allWords
+        allEvents=repository.allevents
     }
 
 
@@ -25,5 +27,8 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
     }
     fun delete(word:Entries)=viewModelScope.launch(Dispatchers.IO) {
         repository.deletentry(word)
+    }
+    fun insertevent(event:Event)=viewModelScope.launch (Dispatchers.IO){
+        repository.insertevent(event)
     }
 }
