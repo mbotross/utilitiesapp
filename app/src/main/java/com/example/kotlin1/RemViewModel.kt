@@ -1,9 +1,8 @@
 package com.example.kotlin1
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class RemViewModel (application: Application) : AndroidViewModel(application) {
@@ -11,6 +10,7 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
     private val repository: DataRepo
     val allWords: LiveData<List<Entries>>
     val allEvents: LiveData<List<Event>>
+    private val __date:MutableLiveData<String>
 
 
 
@@ -19,8 +19,28 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
         repository = DataRepo(wordsDao)
         allWords = repository.allWords
         allEvents=repository.allevents
+
+        __date = MutableLiveData()
+
+
     }
 
+
+
+    val date: LiveData<List<Event>> = Transformations
+        .switchMap(__date){change->
+            println("called")
+            repository.geteventdate(change)
+        }
+
+
+    fun setdate(dateimport:String){
+        if(__date.value==dateimport){
+            return
+        }
+        __date.value=dateimport
+        println(__date.value)
+    }
 
     fun insert(word: Entries) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(word)
@@ -31,4 +51,12 @@ class RemViewModel (application: Application) : AndroidViewModel(application) {
     fun insertevent(event:Event)=viewModelScope.launch (Dispatchers.IO){
         repository.insertevent(event)
     }
+
+
+
+
 }
+
+
+
+

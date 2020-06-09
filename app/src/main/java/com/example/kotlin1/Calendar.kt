@@ -1,6 +1,5 @@
 package com.example.kotlin1
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -10,17 +9,9 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.calendar_fragment.*
-import kotlinx.android.synthetic.main.reminders_fragment.*
-import kotlinx.android.synthetic.main.timer_fragment.*
 import java.time.LocalDateTime
-import java.time.Month
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 
 class Calendar: Fragment() {
@@ -117,6 +108,18 @@ class Calendar: Fragment() {
         val t:Toast=Toast.makeText(activity?.applicationContext,"Please Make Sure all entries are filled",Toast.LENGTH_LONG)
         val t2:Toast=Toast.makeText(activity?.applicationContext,"Event Created",Toast.LENGTH_LONG)
 
+        val currentDateTime = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("M/d/yyyy")
+        var formatted = currentDateTime.format(formatter)
+        calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
+            val msg = "Selected date is " + (month+1) + "/" + dayOfMonth + "/" + year
+            Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
+            formatted= (month+1).toString() + "/" + dayOfMonth + "/" + year
+
+
+
+        }
         button.setOnClickListener {
             if(eventname.text.toString().length>0){
                 event=eventname.text.toString()
@@ -131,21 +134,7 @@ class Calendar: Fragment() {
             if(start>0 && end>0 && event.length>0){
                 //Event successfully created
                 //call view model to store event info
-
-                val currentDateTime = LocalDateTime.now()
-                val formatter = DateTimeFormatter.ofPattern("M/d/yyyy")
-                var formatted = currentDateTime.format(formatter)
                 var eventcreated:Event= Event(eventname.text.toString(),start,end,formatted)
-                calendar?.setOnDateChangeListener { view, year, month, dayOfMonth ->
-                    // Note that months are indexed from 0. So, 0 means January, 1 means february, 2 means march etc.
-                    val msg = "Selected date is " + (month+1) + "/" + dayOfMonth + "/" + year
-                    Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
-                     formatted= (month+1).toString() + "/" + dayOfMonth + "/" + year
-                     eventcreated.date=formatted
-
-
-                }
-
                 viewmodel.insertevent(eventcreated)
                 //t2.show()
             } else{
@@ -155,8 +144,10 @@ class Calendar: Fragment() {
 
         }
         allevents.setOnClickListener{
-            print(viewmodel.allEvents)
+            print("date"+formatted)
+           // viewmodel.setdate(formatted)
             val intent= Intent(this.context, AllEvents::class.java)
+            intent.putExtra("date",formatted)
             startActivity(intent)
         }
 

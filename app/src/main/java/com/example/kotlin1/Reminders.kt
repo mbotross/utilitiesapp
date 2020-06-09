@@ -43,7 +43,8 @@ class Reminders: Fragment() , onclickremind{
         viewmodel= ViewModelProvider(requireActivity()).get(RemViewModel::class.java)
         viewmodel.allWords.observe(viewLifecycleOwner, Observer { words ->
             // Update the cached copy of the words in the adapter.
-            words?.let { adapter.setWords(it) }
+            words?.let {
+                adapter.setWords(it) }
         })
 
         addremind.setOnClickListener{
