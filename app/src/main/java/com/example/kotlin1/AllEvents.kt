@@ -23,7 +23,6 @@ class AllEvents : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
         viewmodel= ViewModelProvider(this).get(RemViewModel::class.java)
-        viewmodel.geteventdate(date)
 
         viewmodel.date.observe(this, Observer { words ->
             // Update the cached copy of the words in the adapter.

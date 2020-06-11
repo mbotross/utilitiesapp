@@ -17,6 +17,9 @@ class CalenAdapter internal constructor(
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.namevent)
         val description:TextView=itemView.findViewById(R.id.list_description)
+        val starttime:TextView=itemView.findViewById(R.id.start_time)
+        val endtime:TextView=itemView.findViewById(R.id.end_time)
+
 
     }
 
@@ -35,6 +38,8 @@ class CalenAdapter internal constructor(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = events[position]
         holder.name.text=current.event
-        holder.description.text=current.date}
+        holder.description.text=current.date
+        holder.starttime.text="Start: ".plus(current.start).plus(' ' +current.time1)
+        holder.endtime.text="End: ".plus(current.end).plus(' ' + current.time2)}
 
 }

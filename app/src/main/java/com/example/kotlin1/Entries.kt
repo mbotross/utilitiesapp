@@ -22,4 +22,8 @@ public class Event(@PrimaryKey
                    @ColumnInfo(name="end")
                     val end:Int,
                    @ColumnInfo(name="date")
-                   var date:String)
+                   var date:String,
+                   @ColumnInfo(name="time1")
+                    var time1:String,
+                    @ColumnInfo(name="time2")
+                    var time2:String)

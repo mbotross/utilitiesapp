@@ -134,7 +134,8 @@ class Calendar: Fragment() {
             if(start>0 && end>0 && event.length>0){
                 //Event successfully created
                 //call view model to store event info
-                var eventcreated:Event= Event(eventname.text.toString(),start,end,formatted)
+                var eventcreated:Event= Event(eventname.text.toString(),start,end,formatted,
+                    scroll1.text as String, scroll2.text as String)
                 viewmodel.insertevent(eventcreated)
                 //t2.show()
             } else{

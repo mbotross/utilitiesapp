@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.time.chrono.HijrahChronology
 
-@Database(entities = arrayOf(Entries::class,Event::class), version = 4, exportSchema = false)
+@Database(entities = arrayOf(Entries::class,Event::class), version = 5, exportSchema = false)
 abstract class WordRoomDatabase : RoomDatabase() {
 
     abstract fun wordDao(): DAO
@@ -36,7 +36,7 @@ abstract class WordRoomDatabase : RoomDatabase() {
             // Add sample words.
             var word = Entries(1,"Reminder")
             wordDao.insert(word)
-            val event=Event("party",3,4,"6/7/2020")
+            val event=Event("party",3,4,"6/7/2020","pm","pm")
             wordDao.insertevent(event)
 
 
