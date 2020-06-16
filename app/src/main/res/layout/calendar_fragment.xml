@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
 
-    <EditText
-            android:layout_width="106dp"
-            android:layout_height="50dp"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/start_time" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toEndOf="@+id/textView3" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.159"
-            app:layout_constraintVertical_bias="0.711"/>
     <CalendarView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,99 +13,158 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.511"
-            app:layout_constraintVertical_bias="0.071"/>
+            app:layout_constraintVertical_bias="0.127"/>
     <EditText
-            android:layout_width="138dp"
-            android:layout_height="45dp"
+            android:layout_width="148dp"
+            android:layout_height="42dp"
             android:inputType="text"
             android:gravity="start|top"
             android:ems="10"
             android:id="@+id/eventname"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/calendarview" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.657" app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:text="Event Name:"
-            android:layout_width="95dp"
-            android:layout_height="54dp"
+            android:layout_width="108dp"
+            android:layout_height="39dp"
+
             android:id="@+id/textView2" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/calendarview" app:layout_constraintHorizontal_bias="0.074"
-            app:layout_constraintVertical_bias="0.031"/>
-    <TextView
-            android:text="Start:"
-            android:layout_width="84dp"
-            android:layout_height="43dp"
-            android:id="@+id/textView3"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/eventname"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintHorizontal_bias="0.441"
-            app:layout_constraintVertical_bias="0.08"/>
-    <TextView
-            android:text="End:"
-            android:layout_width="83dp"
-            android:layout_height="49dp"
-            android:id="@+id/textView4"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.109"
             app:layout_constraintVertical_bias="0.0"/>
-    <Switch
-            android:text="AM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/switch1" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.871"
-            app:layout_constraintVertical_bias="0.698"/>
-    <Switch
-            android:text="AM"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:id="@+id/switch2" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.868"
-            app:layout_constraintVertical_bias="0.77"/>
-    <EditText
-            android:layout_width="106dp"
-            android:layout_height="57dp"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/end_time" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toEndOf="@+id/textView3" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.159"
-            app:layout_constraintVertical_bias="0.804"/>
     <Button
             android:text="Create Event"
             android:layout_width="116dp"
             android:layout_height="58dp"
             android:id="@+id/createevent"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
             app:layout_constraintVertical_bias="0.521" app:layout_constraintHorizontal_bias="0.971"/>
-    <Button
-            android:text="All Events"
-            android:layout_width="162dp"
-            android:layout_height="39dp"
-            android:background="@color/colorAccent"
-            android:id="@+id/allevents" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/end_time" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+
+    <!--<Button-->
+    <!--android:text="All Events"-->
+    <!--android:layout_width="162dp"-->
+    <!--android:layout_height="39dp"-->
+    <!--android:background="@color/colorAccent"-->
+    <!--android:id="@+id/alleventsbutton" android:layout_marginTop="8dp"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/end_time" android:layout_marginBottom="8dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"-->
+    <!--android:layout_marginEnd="8dp" android:layout_marginRight="8dp"-->
+    <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"-->
+    <!--android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.498"-->
+    <!--app:layout_constraintVertical_bias="0.0"/>-->
+    <ImageView
+            android:layout_width="49dp"
+            android:layout_height="49dp" app:srcCompat="@android:drawable/ic_menu_today"
+            android:id="@+id/allevents"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/calendarview"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintEnd_toEndOf="@+id/createevent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="@+id/calendarview"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.802"/>
+    <AutoCompleteTextView
+
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:id="@+id/search"
+            android:completionThreshold="1"
+            app:layout_constraintBottom_toTopOf="@+id/eventname" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="@+id/calendarview"
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.498"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.43"
             app:layout_constraintVertical_bias="0.0"/>
+
+    <Spinner android:layout_width="218dp" android:layout_height="19dp"
+             app:layout_constraintEnd_toEndOf="@+id/calendarview"
+             android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+             android:layout_marginStart="8dp"
+             app:layout_constraintHorizontal_bias="0.408"
+             app:layout_constraintTop_toBottomOf="@+id/search" android:layout_marginBottom="8dp"
+             app:layout_constraintBottom_toTopOf="@+id/eventname" app:layout_constraintVertical_bias="0.0"
+             android:id="@+id/spinner"></Spinner>
+    <ImageView
+            android:layout_width="49dp"
+            android:layout_height="49dp" app:srcCompat="@android:drawable/ic_search_category_default"
+            android:id="@+id/searchimage" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/eventname" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/search"
+            app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toStartOf="@+id/calendarview"
+            app:layout_constraintHorizontal_bias="0.0"/>
+    <Button
+            android:text="5:30 PM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:id="@+id/start_time" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintVertical_bias="0.0"/>
+    <Button
+            android:text="6:30 PM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:id="@+id/end_time"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/eventname" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintVertical_bias="0.273" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.456"/>
+    <TextView
+            android:text="Start Time:"
+            android:layout_width="110dp"
+            android:layout_height="41dp"
+            android:id="@+id/textView3"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/start_time"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintVertical_bias="0.033"/>
+    <TextView
+            android:text="End Time:"
+            android:layout_width="107dp"
+            android:layout_height="44dp"
+            android:id="@+id/textView4"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/end_time"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintVertical_bias="0.06"/>
+    <!--<SearchView-->
+            <!--android:layout_width="198dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:id="@+id/searchView" app:layout_constraintBottom_toTopOf="@+id/calendarview"-->
+            <!--android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--app:layout_constraintVertical_bias="0.0"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/allevents" android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="1.0"/>-->
+
+    <!--<androidx.recyclerview.widget.RecyclerView-->
+            <!--android:background="#FFFFFF"-->
+            <!--android:layout_width="393dp"-->
+            <!--android:layout_height="627dp" app:layout_constraintEnd_toEndOf="parent"-->
+            <!--android:layout_marginEnd="8dp" android:layout_marginRight="8dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.12"-->
+            <!--android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/eventname"-->
+            <!--android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/searchView"-->
+            <!--app:layout_constraintVertical_bias="0.0" android:id="@+id/filterlist"/>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

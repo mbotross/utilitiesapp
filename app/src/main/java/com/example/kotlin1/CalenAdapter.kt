@@ -35,11 +35,20 @@ class CalenAdapter internal constructor(
         notifyDataSetChanged()
     }
 
+
+    fun geteventpos(position:Int):Event{
+        return events[position]
+    }
+
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = events[position]
         holder.name.text=current.event
         holder.description.text=current.date
         holder.starttime.text="Start: ".plus(current.start).plus(' ' +current.time1)
-        holder.endtime.text="End: ".plus(current.end).plus(' ' + current.time2)}
+        holder.endtime.text="End: ".plus(current.end).plus(' ' + current.time2)
+        if(itemCount==0){
+            holder.name.text="No Events to display"
+        }
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.kotlin1
 
+import android.content.Intent
 import android.os.Bundle
 
 import android.view.View
@@ -39,6 +40,12 @@ class Home : AppCompatActivity() {
             Snackbar.make(view,"Reminders",Snackbar.LENGTH_LONG)
                 //.setAction("Reminders",null).show()
                 changefrag3()
+
+        }
+
+        map.setOnClickListener{view->
+            val intent= Intent(this, MapsActivity::class.java)
+            startActivity(intent)
 
         }
 

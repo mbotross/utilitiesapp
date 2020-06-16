@@ -20,5 +20,7 @@ interface DAO{
     fun getEventdate(date:String): LiveData<List<Event>>
    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertevent(event:Event)
+    @Delete
+    suspend fun deletevent(event:Event)
 
 }

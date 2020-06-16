@@ -18,9 +18,9 @@ public class Event(@PrimaryKey
                     @ColumnInfo(name="Event")
                     val event:String,
                     @ColumnInfo(name="start")
-                    val start:Int,
+                    val start:String,
                    @ColumnInfo(name="end")
-                    val end:Int,
+                    val end:String,
                    @ColumnInfo(name="date")
                    var date:String,
                    @ColumnInfo(name="time1")

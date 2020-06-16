@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.timer_fragment.*
 import java.sql.Time
@@ -26,6 +28,8 @@ class Timer: Fragment(){
     private lateinit var startbuttn:Button
     private lateinit var change:EditText
     private lateinit var reset:Button
+    private lateinit var viewmodel:RemViewModel
+    private lateinit var progress:ProgressBar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -48,7 +52,9 @@ class Timer: Fragment(){
         startbuttn=view.findViewById(R.id.starttime)
         change=view.findViewById(R.id.changetime)
         reset=view.findViewById(R.id.resest)
-        entertime.setText(amnt.toString())
+        progress=view.findViewById(R.id.progress)
+        viewmodel= ViewModelProvider(requireActivity()).get(RemViewModel::class.java)
+        entertime.setText(viewmodel.gettime())
 
 
     }
@@ -84,10 +90,13 @@ class Timer: Fragment(){
         var elapsedSeconds:Long=0
         var restore:Long=0
         var click = 0
+        var progamnt=0
         startbuttn.setOnClickListener {
 
             click=click+1
             if (entertime.text.toString().length > 0 && (click%2!=0)) {
+                viewmodel.settime(entertime.text.toString())
+                progamnt= (100/entertime.text.toString().toInt())
                 if(click==1){
                 amnt = entertime.text.toString().toLong()*60*1000}
                 times = object : CountDownTimer(amnt, 1000) {
@@ -100,6 +109,7 @@ class Timer: Fragment(){
                         diff %= minutesInMilli
                         elapsedSeconds = diff / secondsInMilli
                         change.setText(elapsedMinutes.toString() + ":" + elapsedSeconds.toString())
+                        progress.incrementProgressBy(progamnt)
 
                     }
 
@@ -139,6 +149,7 @@ class Timer: Fragment(){
             entertime.setText("")
             change.setText("")
             startbuttn.setText("Start")
+            viewmodel.settime("0")
 
         })
 
