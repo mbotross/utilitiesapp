@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.timer_fragment.*
 import java.sql.Time
 import java.util.*
 import java.util.Timer
+import kotlin.math.roundToInt
 
 class Timer: Fragment(){
 
@@ -96,7 +97,10 @@ class Timer: Fragment(){
             click=click+1
             if (entertime.text.toString().length > 0 && (click%2!=0)) {
                 viewmodel.settime(entertime.text.toString())
-                progamnt= (100/entertime.text.toString().toInt())
+                if(entertime.text.toString().toInt()!=0){
+                    progamnt= (100/(entertime.text.toString().toInt()*60))
+                }
+
                 if(click==1){
                 amnt = entertime.text.toString().toLong()*60*1000}
                 times = object : CountDownTimer(amnt, 1000) {
@@ -110,20 +114,17 @@ class Timer: Fragment(){
                         elapsedSeconds = diff / secondsInMilli
                         change.setText(elapsedMinutes.toString() + ":" + elapsedSeconds.toString())
                         progress.incrementProgressBy(progamnt)
-
                     }
 
 
                     override fun onFinish() {
+                        progress.setProgress(100)
                         change.setText("Done!")
                     }
 
-
                 }.start()
 
-
                 startbuttn.setText("Pause")
-
             }
 
             if(click%2==0){
@@ -150,7 +151,7 @@ class Timer: Fragment(){
             change.setText("")
             startbuttn.setText("Start")
             viewmodel.settime("0")
-
+            progress.setProgress(0)
         })
 
     }

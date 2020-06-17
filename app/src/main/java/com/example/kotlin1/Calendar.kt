@@ -42,6 +42,7 @@ class Calendar: Fragment(){
     private lateinit var search:AutoCompleteTextView
     private lateinit var filter:Spinner
     private lateinit var searchimage:ImageView
+    private lateinit var mapimage:ImageView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view= inflater.inflate(R.layout.calendar_fragment,container,false)
         return view
@@ -62,6 +63,7 @@ class Calendar: Fragment(){
         search=view.findViewById(R.id.search)
         filter=view.findViewById(R.id.spinner)
         searchimage=view.findViewById(R.id.searchimage)
+        mapimage=view.findViewById(R.id.mapview)
 
         val context: Context = this.context ?: return
         adapter = SearchAdapter(context)
@@ -104,35 +106,6 @@ class Calendar: Fragment(){
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        //Managing changing between AM and PM
-//        scroll1.setOnCheckedChangeListener { _, isChecked->
-//            time1=scroll1.text.toString()
-//
-//            if(time1.equals("AM")){
-//                scroll1.text="PM"
-//                time1="PM"
-//            } else{
-//                scroll1.text="AM"
-//                time1="AM"
-//            }
-//        }
-//
-//        scroll2.setOnCheckedChangeListener { _, isChecked->
-//            time2=scroll2.text.toString()
-//
-//            if(time2.equals("AM")){
-//                scroll2.text="PM"
-//                time2="PM"
-//            } else{
-//                scroll2.text="AM"
-//                time2="AM"
-//            }
-//        }
-
-
-        //Inputs
-
 
 
 
@@ -243,8 +216,14 @@ class Calendar: Fragment(){
 
             }
 
+
         }
 
+        mapimage.setOnClickListener{
+            val intent=Intent(this.context,MapsActivity::class.java)
+            startActivity(intent)
+            //return to this fragment when done
+        }
 
 
 //        searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

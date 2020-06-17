@@ -18,20 +18,20 @@
     />
 
 
-        <com.mancj.materialsearchbar.MaterialSearchBar
-                style="android:@style/MaterialSearchBarLight"
-                app:mt_speechMode="false"
-                app:mt_hint="Search a place"
-                app:mt_maxSuggestionsCount="10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/searchBar"
-                android:layout_margin="16dp"
-                app:mt_navIconEnabled="true"
-                android:elevation="10dp"
-                android:outlineProvider="bounds"
-                app:mt_placeholder="Search a place"
-        />
+    <com.mancj.materialsearchbar.MaterialSearchBar
+            style="android:@style/MaterialSearchBarLight"
+            app:mt_speechMode="false"
+            app:mt_hint="Search a place"
+            app:mt_maxSuggestionsCount="10"
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchBar"
+            app:mt_navIconEnabled="true"
+            android:elevation="30dp"
+            android:outlineProvider="bounds"
+            app:mt_placeholder="Search a place"
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"/>
 
     </RelativeLayout>
 
