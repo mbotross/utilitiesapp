@@ -146,6 +146,17 @@ class Timer: Fragment(){
         }
 
         reset.setOnClickListener({
+            if(click%2==1){
+                times.cancel()
+                amnt=restore
+                diff = 0
+                secondsInMilli= 0
+                minutesInMilli = 0
+                elapsedMinutes = 0
+                elapsedSeconds= 0
+                startbuttn.setText("Stop")
+
+            }
             click=0
             entertime.setText("")
             change.setText("")
